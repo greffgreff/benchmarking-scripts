@@ -4,20 +4,20 @@ import time
 import ssl
 import sys
 
-print("Benchmarking...")
-
 websocket_url = sys.argv[2] or "ws://echo.websocket.events"
 benchmark_time = int(sys.argv[1]) or 10
-messages_sent = 0
-messages_received = 0
 message = {"test": "test message"}
 
 ws = websocket.WebSocket(sslopt={"cert_reqs": ssl.CERT_NONE})
 ws.settimeout(5)
 ws.connect(websocket_url)
 
+print(f"Benchmarking {websocket_url}")
+
 start = time.time()
 
+messages_sent = 0
+messages_received = 0
 while (time.time() - start) < benchmark_time:
     ws.send(json.dumps(message))
     messages_sent += 1
