@@ -25,6 +25,7 @@ ws.close()
 
 end = time.time()
 
-print(f"Sent {messages_to_send} messages in {end-start:.2f} seconds")
+print(f"Sent {messages_sent} messages in {end-start:.2f} seconds")
 print(f"Average latency: {(end-start)/messages_to_send:.6f} seconds per message")
+print(f"Messages per second: {messages_sent/(end-start):.2f}")
 print("Finished benchmarking.")
